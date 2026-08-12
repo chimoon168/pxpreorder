@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>N特工作流程泳道圖（直式）</title>
+<style>
+  body {
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+    background: #f5f6f8;
+    margin: 0;
+    padding: 16px;
+  }
+  h1 { font-size: 16px; color: #222; margin: 0 0 3px 0; }
+  .subtitle { font-size: 11px; color: #666; margin-bottom: 10px; }
+  .chart-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    padding: 8px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  .lane-label { font-size: 13px; font-weight: bold; fill: #333; }
+  .step-title { font-size: 13px; font-weight: 600; fill: #1a1a1a; }
+  .step-badge { font-size: 11px; font-weight: bold; fill: #fff; }
+  .note-badge { font-size: 11px; font-weight: bold; fill: #fff; }
+  .legend-text { font-size: 11.5px; fill: #555; }
+</style>
+</head>
+<body>
+
+<h1>預購商品 N特 工作流程圖（泳道圖・直式）</h1>
+<div class="subtitle">SCM變價/N特 → B2E審核 → 中繼ERP → 國興特賣 → B2E回抓/篩選活動 → 發行銷事件給B2C → B2C建立活動/成立訂單 → B2E找出線上N特成本／獨立線下訂單流程</div>
+
+<div class="chart-wrap">
+<svg viewBox="0 0 1200 1430" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="2.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,5 L7,2.5 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- ============ Column (lane) background bands, full height ============ -->
+  <rect x="75"  y="50" width="210" height="1300" fill="#FFF3E0"/>  <!-- SCM -->
+  <rect x="285" y="50" width="210" height="1300" fill="#E3F2FD"/>  <!-- B2E -->
+  <rect x="495" y="50" width="210" height="1300" fill="#F3E5F5"/>  <!-- ERP -->
+  <rect x="705" y="50" width="210" height="1300" fill="#E8F5E9"/>  <!-- 國興 -->
+  <rect x="915" y="50" width="210" height="1300" fill="#FFEBEE"/>  <!-- B2C -->
+
+  <!-- column divider lines -->
+  <line x1="285" y1="50" x2="285" y2="1350" stroke="#ddd" stroke-width="1"/>
+  <line x1="495" y1="50" x2="495" y2="1350" stroke="#ddd" stroke-width="1"/>
+  <line x1="705" y1="50" x2="705" y2="1350" stroke="#ddd" stroke-width="1"/>
+  <line x1="915" y1="50" x2="915" y2="1350" stroke="#ddd" stroke-width="1"/>
+  <line x1="75"  y1="50" x2="1125" y2="50"  stroke="#ccc" stroke-width="1.5"/>
+  <line x1="75"  y1="1350" x2="1125" y2="1350" stroke="#ccc" stroke-width="1.5"/>
+
+  <!-- ============ Lane headers ============ -->
+  <text x="180" y="35" text-anchor="middle" class="lane-label">SCM（供應商）</text>
+  <text x="390" y="35" text-anchor="middle" class="lane-label">B2E（採購/主管）</text>
+  <text x="600" y="35" text-anchor="middle" class="lane-label">中繼ERP</text>
+  <text x="810" y="35" text-anchor="middle" class="lane-label">國興（特賣/prom）</text>
+  <text x="1020" y="35" text-anchor="middle" class="lane-label">B2C（前台商城）</text>
+
+  <!-- ============ Divider before independent branch ============ -->
+  <line x1="75" y1="1125" x2="1125" y2="1125" stroke="#999" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <text x="600" y="1150" text-anchor="middle" style="font-size:11.5px; fill:#888; font-style:italic;">獨立分流（無前置步驟觸發）</text>
+
+  <!-- ============ Arrows (main chain) ============ -->
+  <line x1="180" y1="148" x2="390" y2="185" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 1->2 -->
+  <line x1="390" y1="243" x2="600" y2="280" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 2->3 -->
+  <line x1="600" y1="338" x2="600" y2="375" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 3->4 -->
+  <line x1="600" y1="433" x2="810" y2="470" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 4->5 -->
+  <line x1="810" y1="528" x2="390" y2="565" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 5->6 -->
+  <line x1="390" y1="623" x2="390" y2="660" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 6->7 -->
+  <line x1="390" y1="718" x2="390" y2="755" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 7->8 -->
+  <line x1="390" y1="813" x2="1020" y2="850" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 8->9 -->
+  <line x1="1020" y1="908" x2="1020" y2="945" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 9->10 -->
+  <line x1="1020" y1="1003" x2="390" y2="1040" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 10->11 -->
+
+  <!-- ============ Arrow (independent chain) ============ -->
+  <line x1="600" y1="1223" x2="390" y2="1260" stroke="#555" stroke-width="1.6" marker-end="url(#arrow)"/> <!-- 12->13 -->
+
+  <!-- ============ Step boxes (main chain) ============ -->
+  <!-- 1 -->
+  <g>
+    <rect x="95" y="90" width="170" height="58" rx="6" fill="#fff" stroke="#FB8C00" stroke-width="1.6"/>
+    <circle cx="95" cy="90" r="11" fill="#FB8C00"/>
+    <text x="95" y="94" text-anchor="middle" class="step-badge">1</text>
+    <text x="180" y="111" text-anchor="middle" class="step-title">SCM供應商</text>
+    <text x="180" y="129" text-anchor="middle" class="step-title">變價+N特</text>
+  </g>
+
+  <!-- 2 -->
+  <g>
+    <rect x="305" y="185" width="170" height="58" rx="6" fill="#fff" stroke="#1E88E5" stroke-width="1.6"/>
+    <circle cx="305" cy="185" r="11" fill="#1E88E5"/>
+    <text x="305" y="189" text-anchor="middle" class="step-badge">2</text>
+    <text x="390" y="218" text-anchor="middle" class="step-title">B2E採購+主管審核</text>
+  </g>
+
+  <!-- 3 -->
+  <g>
+    <rect x="515" y="280" width="170" height="58" rx="6" fill="#fff" stroke="#8E24AA" stroke-width="1.6"/>
+    <circle cx="515" cy="280" r="11" fill="#8E24AA"/>
+    <text x="515" y="284" text-anchor="middle" class="step-badge">3</text>
+    <text x="600" y="301" text-anchor="middle" class="step-title">B2E寫入</text>
+    <text x="600" y="319" text-anchor="middle" class="step-title">中繼ERP</text>
+  </g>
+
+  <!-- 4 -->
+  <g>
+    <rect x="515" y="375" width="170" height="58" rx="6" fill="#fff" stroke="#E65100" stroke-width="1.8" stroke-dasharray="5,3"/>
+    <circle cx="515" cy="375" r="11" fill="#8E24AA"/>
+    <text x="515" y="379" text-anchor="middle" class="step-badge">4</text>
+    <text x="600" y="396" text-anchor="middle" class="step-title">ERP轉入國興</text>
+    <text x="600" y="414" text-anchor="middle" class="step-title">特賣prom</text>
+    <circle cx="670" cy="381" r="10" fill="#E65100"/>
+    <text x="670" y="385" text-anchor="middle" class="note-badge">?</text>
+    <text x="600" y="443" text-anchor="middle" style="font-size:11.5px; fill:#E65100; font-weight:bold;">(同步國興時間待確認)</text>
+  </g>
+
+  <!-- 5 -->
+  <g>
+    <rect x="725" y="470" width="170" height="58" rx="6" fill="#fff" stroke="#43A047" stroke-width="1.6"/>
+    <circle cx="725" cy="470" r="11" fill="#43A047"/>
+    <text x="725" y="474" text-anchor="middle" class="step-badge">5</text>
+    <text x="810" y="491" text-anchor="middle" class="step-title">國興寫入</text>
+    <text x="810" y="509" text-anchor="middle" class="step-title">中繼prom</text>
+  </g>
+
+  <!-- 6 -->
+  <g>
+    <rect x="305" y="565" width="170" height="58" rx="6" fill="#fff" stroke="#1E88E5" stroke-width="1.6"/>
+    <circle cx="305" cy="565" r="11" fill="#1E88E5"/>
+    <text x="305" y="569" text-anchor="middle" class="step-badge">6</text>
+    <text x="390" y="586" text-anchor="middle" class="step-title">B2E抓回</text>
+    <text x="390" y="604" text-anchor="middle" class="step-title">N特活動</text>
+  </g>
+
+  <!-- 7 -->
+  <g>
+    <rect x="305" y="660" width="170" height="58" rx="6" fill="#fff" stroke="#1E88E5" stroke-width="1.6"/>
+    <circle cx="305" cy="660" r="11" fill="#1E88E5"/>
+    <text x="305" y="664" text-anchor="middle" class="step-badge">7</text>
+    <text x="390" y="681" text-anchor="middle" class="step-title">B2E篩選第一階</text>
+    <text x="390" y="699" text-anchor="middle" class="step-title">活動(pno_no)</text>
+  </g>
+
+  <!-- 8 : B2E發行銷事件給B2C -->
+  <g>
+    <rect x="305" y="755" width="170" height="58" rx="6" fill="#fff" stroke="#1E88E5" stroke-width="1.6"/>
+    <circle cx="305" cy="755" r="11" fill="#1E88E5"/>
+    <text x="305" y="759" text-anchor="middle" class="step-badge">8</text>
+    <text x="390" y="776" text-anchor="middle" class="step-title">B2E發行銷</text>
+    <text x="390" y="794" text-anchor="middle" class="step-title">事件給B2C</text>
+  </g>
+
+  <!-- 9 : B2C建立N特行銷活動 (NEW) -->
+  <g>
+    <rect x="935" y="850" width="170" height="58" rx="6" fill="#fff" stroke="#1565C0" stroke-width="2" stroke-dasharray="0"/>
+    <circle cx="935" cy="850" r="11" fill="#E53935"/>
+    <text x="935" y="854" text-anchor="middle" class="step-badge">9</text>
+    <text x="1020" y="871" text-anchor="middle" class="step-title">B2C建立</text>
+    <text x="1020" y="889" text-anchor="middle" class="step-title">N特行銷活動</text>
+    <text x="1020" y="840" text-anchor="middle" style="font-size:9.5px; fill:#1565C0; font-weight:bold;">NEW</text>
+  </g>
+
+  <!-- 10 : B2C成立預購N特訂單 -->
+  <g>
+    <rect x="935" y="945" width="170" height="58" rx="6" fill="#fff" stroke="#E53935" stroke-width="1.6"/>
+    <circle cx="935" cy="945" r="11" fill="#E53935"/>
+    <text x="935" y="949" text-anchor="middle" class="step-badge">10</text>
+    <text x="1020" y="966" text-anchor="middle" class="step-title">B2C成立</text>
+    <text x="1020" y="984" text-anchor="middle" class="step-title">預購N特訂單</text>
+  </g>
+
+  <!-- 11 : B2E收到線上N特訂單(找出N特成本) -->
+  <g>
+    <rect x="305" y="1040" width="170" height="58" rx="6" fill="#fff" stroke="#1E88E5" stroke-width="1.6"/>
+    <circle cx="305" cy="1040" r="11" fill="#1E88E5"/>
+    <text x="305" y="1044" text-anchor="middle" class="step-badge">11</text>
+    <text x="390" y="1061" text-anchor="middle" class="step-title">B2E收到線上N特訂單</text>
+    <text x="390" y="1079" text-anchor="middle" class="step-title" style="fill:#1565C0;">(找出N特成本)</text>
+  </g>
+
+  <!-- ============ Step boxes (independent chain) ============ -->
+  <!-- 12 : ERP寫入線下訂單 -->
+  <g>
+    <rect x="515" y="1165" width="170" height="58" rx="6" fill="#fff" stroke="#8E24AA" stroke-width="1.6" stroke-dasharray="4,3"/>
+    <circle cx="515" cy="1165" r="11" fill="#8E24AA"/>
+    <text x="515" y="1169" text-anchor="middle" class="step-badge">12</text>
+    <text x="600" y="1186" text-anchor="middle" class="step-title">ERP寫入</text>
+    <text x="600" y="1204" text-anchor="middle" class="step-title">線下訂單</text>
+  </g>
+
+  <!-- 13 : B2E收到線下N特訂單(找出N特成本) -->
+  <g>
+    <rect x="305" y="1260" width="170" height="58" rx="6" fill="#fff" stroke="#1E88E5" stroke-width="1.6"/>
+    <circle cx="305" cy="1260" r="11" fill="#1E88E5"/>
+    <text x="305" y="1264" text-anchor="middle" class="step-badge">13</text>
+    <text x="390" y="1281" text-anchor="middle" class="step-title">B2E收到線下N特訂單</text>
+    <text x="390" y="1299" text-anchor="middle" class="step-title" style="fill:#1565C0;">(找出N特成本)</text>
+  </g>
+
+  <!-- ============ Legend ============ -->
+  <text x="75" y="1372" class="legend-text">流程說明：供應商於SCM提出變價並勾選N特 → B2E採購/主管兩階審核通過 → B2E寫入中繼ERP(實體資料在ERP) → ERP轉入國興特賣(prom)開檔(同步國興時間待確認)</text>
+  <text x="75" y="1390" class="legend-text">→ 國興寫入中繼prom → B2E回抓N特活動並篩選出第一階活動(pno_no) → B2E發行銷事件給B2C → B2C建立N特行銷活動 → B2C成立預購N特訂單 → B2E找出線上N特成本。</text>
+  <text x="75" y="1408" class="legend-text">獨立分流：ERP寫入線下訂單（無前置步驟觸發，例如門市POS）→ B2E找出線下N特成本，與線上主流程互不相接。</text>
+
+</svg>
+</div>
+
+</body>
+</html>
